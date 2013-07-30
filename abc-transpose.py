@@ -15,15 +15,15 @@ Where [transpose] is one of the following:
 import sys, getopt
 
 global TRANPOSE
-TRANSPOSE = [',C', ',D', ',E', ',F', ',G', ',A', ',B', "C", "D",
+TRANSPOSE = ['C,', 'D,', 'E,', 'F,', 'G,', 'A,', 'B,', "C", "D",
              "E", "F", "G", "A", "B", "c", "d", "e", "f", "g",
-             "a", "b", "'c", "'d", "'e", "'f", "'g", "'a", "'b"]
+             "a", "b", "c'", "d'", "e'", "f'", "g'", "a'", "b'"]
 TRANSPOSE_UP = []
 for note in TRANSPOSE[TRANSPOSE.index("'c"):]:
-    TRANSPOSE_UP.append("'" + note)
+    TRANSPOSE_UP.append(note + "'")
 TRANSPOSE_DOWN = []
 for note in TRANSPOSE[:TRANSPOSE.index("C")]:
-    TRANSPOSE_DOWN.append("," + note)
+    TRANSPOSE_DOWN.append(note + ",")
     
 def write_output(outfile, output):
     if outfile == -1:
