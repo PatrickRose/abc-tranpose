@@ -116,6 +116,8 @@ def description(line):
     for marker in MARKERS:
         if (marker + ":") in line:
             return True
+    if line.strip()[0] == "%":
+        return True
     return False
 
 def transpose_key(line):
