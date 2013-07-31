@@ -160,6 +160,7 @@ else:
     
 with open(infile) as infile:
     for line in infile:
+        do_song = True
         if "X:" in line or "x:" in line:
             do_song = song_check(line, number)
         if do_song and not description(line):
