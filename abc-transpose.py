@@ -116,7 +116,8 @@ def description(line):
     for marker in MARKERS:
         if (marker + ":") in line:
             return True
-    if line.strip()[0] == "%":
+    stripped_line = line.strip()
+    if len(stripped_line) > 0 and stripped_line[0] == "%":
         return True
     return False
 
