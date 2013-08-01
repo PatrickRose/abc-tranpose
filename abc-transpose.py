@@ -74,12 +74,12 @@ def main(args):
                 if transpose:
                     print("Already passed a value")
                     raise ValueError("Already passed a value")
-                transpose = int(arg)
+                transpose = int(arg) - 1
             elif opt in DOWN_OPTS:
                 if transpose:
                     print("Already passed a value")
                     raise ValueError("Already passed a value")
-                transpose = -int(arg)
+                transpose = 1 - int(arg)
             elif opt in IN_OPTS:
                 infile = arg
             elif opt in OUT_OPTS:
@@ -144,17 +144,23 @@ def transpose_note(note):
 def transpose_line(line):
     buff = ""
     to_return = ""
+    comment = False
     for character in line:
-        if character in ["'", ","]:
+        if character == "%":
+            comment = True
+            to_return += transpose_note(buff)
+            buff = character
+        elif comment:
+            buff += character
+        elif character in ["'", ","]:
             buff = character
         else:
             to_return += transpose_note(buff+character)
             buff = ""
-    return to_return
+    return to_return + buff
 
 def song_check(line, number):
-    lines_number = line[line.rfind(":")+1:].strip()
-    return int(lines_number) == number or number == 0
+    return  number == 0 or int(line[line.rfind(":")+1:].strip()) == number
 
 if transpose > 0:
     TRANSPOSE.append(TRANSPOSE_UP)
