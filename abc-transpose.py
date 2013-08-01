@@ -74,12 +74,12 @@ def main(args):
                 if transpose:
                     print("Already passed a value")
                     raise ValueError("Already passed a value")
-                transpose = int(arg) - 1
+                transpose = int(arg)
             elif opt in DOWN_OPTS:
                 if transpose:
                     print("Already passed a value")
                     raise ValueError("Already passed a value")
-                transpose = 1 - int(arg)
+                transpose = -int(arg)
             elif opt in IN_OPTS:
                 infile = arg
             elif opt in OUT_OPTS:
