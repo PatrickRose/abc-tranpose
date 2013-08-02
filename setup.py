@@ -1,6 +1,6 @@
 from distutils.core import setup
 setup(name='abc-transpose',
-      version='0.2',
+      version='0.3',
       description='abc transposer',
       author='Patrick Rose',
       author_email='pjr0911025@googlemail.com',
